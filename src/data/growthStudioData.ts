@@ -1,7 +1,27 @@
+/*
+ * ENTITY FACTS. These sentences are what Google, ChatGPT, Gemini, Perplexity and Claude quote
+ * when someone asks "What is Pathfinder Grow?". Keep them word-for-word identical on every
+ * profile (LinkedIn, Facebook, Google Business Profile, Clutch, Crunchbase). Change them here
+ * and on those profiles at the same time, never in only one place.
+ */
 export const AGENCY_INFO = {
   name: "Pathfinder Grow",
+  alternateNames: ["PathfinderGrow", "Pathfinder Grow Ltd"],
   url: "https://pathfindergrow.com",
+  category: "Business growth company",
   tagline: "Get found. Get chosen. Grow.",
+  slogan: "Grow your business toward its biggest goal.",
+  /** One sentence, answer-first. Used in the hero, footer, schema and all external profiles. */
+  definition:
+    "Pathfinder Grow is a business growth company that helps businesses grow in every direction, from planning and roadmaps to websites, apps, ads, branding, SEO and AI search visibility.",
+  /** The proof sentence that follows the definition. Only numbers we can show. */
+  proof:
+    "Its founders have built and grown platforms used by more than 3 million people, including Audiofrica, Supfrica and Doctors Hero, and have helped 200+ businesses and platforms grow online.",
+  /**
+   * Official profiles of the company. Fill these in as soon as each profile exists:
+   * every URL added here becomes a `sameAs` link that ties the entity together for Google and AI.
+   */
+  sameAs: [] as string[],
   contact: {
     whatsapp: "01342132792",
     whatsappLink:
@@ -9,7 +29,7 @@ export const AGENCY_INFO = {
     email: "almamun@pathfinderpko.com",
     emailLink:
       "mailto:almamun@pathfinderpko.com?subject=Growth%20Inquiry%20-%20Pathfinder%20Grow",
-    location: "Dhaka, Bangladesh · remote worldwide",
+    location: "Working with businesses worldwide",
   },
 };
 
@@ -22,20 +42,27 @@ export interface ProofItem {
 
 export const PROOF_ITEMS: ProofItem[] = [
   {
+    client: "Audiofrica",
+    fact: "Music and radio platform with 3M+ registered users across Africa",
+    role: "Platform engineering",
+    href: "https://audiofrica.com/",
+  },
+  {
     client: "Doctors Hero",
     fact: "#1 on Google for its target searches within two weeks",
     role: "SEO and GEO",
     href: "https://doctorshero.com/",
   },
   {
-    client: "Modern Mediks",
-    fact: "Clinic operating system used by 24+ clinics",
-    role: "System design and engineering",
+    client: "PatientCare.com.bd",
+    fact: "Patient portal for booking doctors online",
+    role: "UI and UX design",
+    href: "https://patientcare.com.bd/",
   },
   {
-    client: "Pathfinder Peko",
-    fact: "Learning platform with 10,000+ learners",
-    role: "Product engineering",
+    client: "Modern Mediks",
+    fact: "Digital prescriptions for 24+ clinics and 10,000+ patient records",
+    role: "System design and engineering",
   },
 ];
 
@@ -60,7 +87,8 @@ export const PILLARS: Pillar[] = [
       "SEO and high-intent keyword work for Google",
       "Generative Engine Optimization (GEO) for ChatGPT, Gemini and Perplexity",
       "Structured data (JSON-LD) and entity modeling",
-      "Ongoing checks of the questions buyers ask AI assistants",
+      "Custom ad campaigns and ad videos for Google, Meta and YouTube",
+      "Competitor analysis and ongoing checks of what buyers ask AI assistants",
     ],
   },
   {
@@ -71,7 +99,7 @@ export const PILLARS: Pillar[] = [
     promise:
       "Perception sets price. A clear, distinctive identity makes you look as established as you are, so buyers negotiate less and decide faster.",
     services: [
-      "Logo and brand mark design",
+      "Logo, brand mark and graphic design",
       "Brand style guide: type, color and spacing rules",
       "Social media kit, pitch-deck template and business collateral",
       "Figma design system ready for developers",
@@ -99,6 +127,7 @@ export const PILLARS: Pillar[] = [
     promise:
       "Growth breaks when everything depends on manual work. We automate the repeat tasks so leads are answered and data stays in sync.",
     services: [
+      "Business planning, growth roadmaps and help opening a company in the US or UK",
       "Instant WhatsApp and email alerts for new leads",
       "CRM updates, webhooks and Zapier or Make automations",
       "Backend systems, databases and caching",
@@ -270,36 +299,150 @@ export const PROCESS_STEPS: Step[] = [
   },
 ];
 
+export interface Experience {
+  title: string;
+  org: string;
+  period: string;
+  summary: string;
+}
+
 export interface TeamMember {
+  slug: string;
   name: string;
+  /** Short title shown on cards and used as schema.org jobTitle. */
+  jobTitle: string;
   role: string;
+  /** Answer-first summary (40 to 60 words) for the profile page and AI answers. */
+  summary: string;
   bio: string;
   facts: string[];
+  experience: Experience[];
+  knowsAbout: string[];
+  /** LinkedIn, GitHub, X, Awwwards, Fiverr... Every URL here becomes a `sameAs` link. */
+  sameAs: string[];
   image: string;
 }
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: "Md. Siyam",
-    role: "Co-founder · Systems, backend and automation",
-    bio: "Full-stack developer and systems architect. Wrote the first microcontroller code at age 11.",
+    slug: "robin",
+    name: "Robin",
+    jobTitle: "CEO and Interactive Web Developer",
+    role: "CEO and co-founder · Interactive web developer",
+    summary:
+      "Robin is the CEO and co-founder of Pathfinder Grow and an interactive web developer. Since 2022 Robin has built fast, motion-rich websites with Next.js and GSAP, designed brands and logos, led the SEO and GEO work for Doctors Hero and designed the PatientCare.com.bd patient portal.",
+    bio: "Interactive web developer, designer and SEO and GEO specialist. Builds ultra-fast websites that tell a story as you scroll.",
     facts: [
-      "Designed Modern Mediks, a clinic operating system used by 24+ clinics",
-      "Built distributed systems for UK companies including Techfrica LLC and House of Change",
-      "Works across Next.js, Node.js, Python, PostgreSQL, Redis and AWS",
+      "Led SEO and GEO for Doctors Hero, a healthcare platform used by 500+ clinics",
+      "Designed the UI and UX of PatientCare.com.bd, a patient portal for booking doctors online",
+      "Builds interactive, ultra-fast websites with Next.js, GSAP and Framer Motion",
+      "Graphic and logo designer who also builds Flutter mobile apps",
     ],
-    image: "/team/siyam.png",
+    experience: [
+      {
+        title: "CEO and co-founder",
+        org: "Pathfinder Grow",
+        period: "Present",
+        summary: "Leads strategy, interactive web development, design and search visibility for client businesses.",
+      },
+      {
+        title: "SEO and GEO specialist",
+        org: "Doctors Hero",
+        period: "Client work",
+        summary: "Structured the platform's search presence so Google and AI assistants understand and surface it.",
+      },
+      {
+        title: "UI and UX designer",
+        org: "PatientCare.com.bd",
+        period: "Client work",
+        summary: "Designed the patient portal for finding doctors, booking serials and keeping prescriptions in one place.",
+      },
+      {
+        title: "Web developer and designer",
+        org: "Independent",
+        period: "2022 to present",
+        summary: "Websites, graphic design and logo design for businesses and platforms.",
+      },
+    ],
+    knowsAbout: [
+      "Interactive web development",
+      "Next.js",
+      "React",
+      "GSAP",
+      "Framer Motion",
+      "UI and UX design",
+      "Graphic design",
+      "Logo design",
+      "Search engine optimization",
+      "Generative engine optimization",
+      "Flutter",
+    ],
+    sameAs: [],
+    image: "/team/robin.webp",
   },
   {
-    name: "Robin",
-    role: "Co-founder · Product, frontend, motion and search visibility",
-    bio: "Specialist in interactive web interfaces and Generative Engine Optimization.",
+    slug: "siyam",
+    name: "Md. Siyam",
+    jobTitle: "CTO and Backend Engineer",
+    role: "CTO and co-founder · Backend and systems architect",
+    summary:
+      "Md. Siyam is the CTO and co-founder of Pathfinder Grow and a backend engineer and systems architect. Siyam leads technology at Modern Mediks, which digitizes prescriptions for 24+ clinics, serves as IT Director at Techfrica LLC in the UK and is a Top-Rated developer on Fiverr with 50+ projects delivered.",
+    bio: "Backend engineer and systems architect. Wrote the first microcontroller code at age 11.",
     facts: [
-      "Built Pathfinder Peko, a learning platform with real-time 1v1 quiz battles",
-      "Builds story-driven interfaces with Next.js, GSAP and Framer Motion",
-      "Also builds cross-platform mobile apps with Flutter and Dart",
+      "Technology Officer at Modern Mediks: digital prescriptions for 24+ clinics and 10,000+ patient records",
+      "IT Director at Techfrica LLC, automating workflows for UK startups with 99.9% pipeline uptime",
+      "Former Head Backend Developer at House of Change Limited",
+      "Top-Rated on Fiverr with 50+ projects, 5-star ratings and a 100% on-time record",
     ],
-    image: "/team/robin.webp",
+    experience: [
+      {
+        title: "CTO and co-founder",
+        org: "Pathfinder Grow",
+        period: "Present",
+        summary: "Leads backend, cloud infrastructure and automation for every client platform.",
+      },
+      {
+        title: "Technology Officer",
+        org: "Modern Mediks",
+        period: "May 2024 to present",
+        summary:
+          "Building the clinic management platform: digital prescriptions, patient records and clinical workflows for doctors across Bangladesh.",
+      },
+      {
+        title: "IT Director",
+        org: "Techfrica LLC",
+        period: "September 2023 to present",
+        summary:
+          "Leads software development and IT strategy, automating enterprise workflows and building secure systems for UK-based startups. Fully remote.",
+      },
+      {
+        title: "Web Designer and Developer (Top-Rated)",
+        org: "Fiverr",
+        period: "February 2023 to December 2025",
+        summary: "Delivered 50+ custom web projects: landing pages, full-stack web apps and CMS architectures for clients worldwide.",
+      },
+      {
+        title: "Head Backend Developer",
+        org: "House of Change Limited",
+        period: "2022 to August 2023",
+        summary: "Led backend engineering: scalable server-side systems, secure database architecture and legacy modernization.",
+      },
+    ],
+    knowsAbout: [
+      "Backend engineering",
+      "System architecture",
+      "Node.js",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "AWS",
+      "Workflow automation",
+      "Embedded systems",
+    ],
+    sameAs: [],
+    image: "/team/siyam.png",
   },
 ];
 
@@ -392,7 +535,23 @@ export interface FaqItem {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     q: "What does Pathfinder Grow do?",
-    a: "Pathfinder Grow is a digital growth studio run by founders Md. Siyam and Robin. We help businesses get more customers online: SEO and AI-search visibility so people find you, brand identity and fast websites so they choose you, and automation so leads and follow-ups run without extra staff.",
+    a: "Pathfinder Grow is a business growth company that helps businesses grow in every direction: planning and roadmaps, websites and apps, ads, branding, SEO and AI search visibility. Its founders have built and grown platforms used by more than 3 million people and have helped 200+ businesses grow online.",
+  },
+  {
+    q: "Who founded Pathfinder Grow?",
+    a: "Pathfinder Grow was founded by Robin, the CEO and an interactive web developer, and Md. Siyam, the CTO and a backend engineer and systems architect. Both founders work directly on every client project, so the people you talk to are the people building your growth.",
+  },
+  {
+    q: "What platforms has Pathfinder Grow worked on?",
+    a: "The team has worked on Audiofrica, a music and radio platform with 3M+ registered users across Africa; Supfrica, a messenger and super-app with 300,000+ downloads; Doctors Hero, a healthcare platform used by 500+ clinics; PatientCare.com.bd; Modern Mediks; Kajer Hut and Oushud.",
+  },
+  {
+    q: "Can you help me open a company in the US or UK?",
+    a: "Yes. Pathfinder Grow helps founders plan their expansion, build a growth roadmap and set up a company in the US or UK, then builds the website, brand, ads and search presence the new company needs to win its first customers.",
+  },
+  {
+    q: "Do you create ads?",
+    a: "Yes. We plan and build custom ad campaigns for Google, Meta and YouTube, including the ad videos and creatives, based on a competitor analysis of your market. Ads work best alongside SEO, so paid and organic search support each other.",
   },
   {
     q: "What is Generative Engine Optimization (GEO)?",
@@ -408,7 +567,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Who will work on my project?",
-    a: "You work directly with the two founders. Md. Siyam leads systems, backend and automation. Robin leads product, frontend, motion and search visibility. There are no account managers in between, so the people you talk to are the people building your project.",
+    a: "You work directly with the two founders. Robin, the CEO, leads strategy, interactive web development, design and search visibility. Md. Siyam, the CTO, leads backend systems, cloud infrastructure and automation. There are no account managers in between, so the people you talk to are the people building your project.",
   },
   {
     q: "Do you work with clinics and healthcare?",

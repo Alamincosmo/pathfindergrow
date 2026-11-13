@@ -9,7 +9,7 @@ const NODES = [
   { label: "Search", x: 22, y: 22, depth: 14, fd: "0s", Icon: Search, tone: "text-mint" },
   { label: "Brand", x: 78, y: 22, depth: 20, fd: "-1.5s", Icon: Palette, tone: "text-sky" },
   { label: "Website", x: 22, y: 78, depth: 18, fd: "-3s", Icon: Globe, tone: "text-sky" },
-  { label: "Automation", x: 78, y: 78, depth: 12, fd: "-4.5s", Icon: Zap, tone: "text-lime" },
+  { label: "Automation", x: 78, y: 78, depth: 12, fd: "-4.5s", Icon: Zap, tone: "text-emerald-ink" },
 ];
 
 const PATHS = [
@@ -70,7 +70,7 @@ export default function HubGraphic({ className = "" }: { className?: string }) {
       <div className="absolute left-1/2 top-1/2 size-[30%] -translate-x-1/2 -translate-y-1/2">
         <span className="hub-ring absolute inset-0 rounded-[28%] border border-mint/60" />
         <span className="hub-ring absolute inset-0 rounded-[28%] border border-mint/40" style={{ "--rd": "1.6s" } as React.CSSProperties} />
-        <div className="relative grid size-full place-items-center rounded-[28%] border border-white/10 bg-night-3 shadow-[0_0_60px_-10px_rgba(53,224,161,0.5)]">
+        <div className="relative grid size-full place-items-center rounded-[28%] border border-white/10 bg-night-3 shadow-[0_0_60px_-10px_rgba(35,171,130,0.35)]">
           <LogoMark className="h-[58%] w-auto" />
         </div>
       </div>

@@ -38,10 +38,20 @@
     --g2: #0B78B8;
   }
 
+  /* ".on-dark" is a legacy class name: it now marks the soft off-white green theme.
+     Remapping the tokens here flips every section that uses them, with no per-file edits. */
   .on-dark {
-    --line: rgba(242, 247, 244, 0.12);
-    --g1: #35E0A1;
-    --g2: #4BB3F0;
+    --line: rgba(7, 17, 14, 0.12);
+    --g1: #0E8A66;
+    --g2: #0B78B8;
+    --color-stage: #F4F8F5;
+    --color-night-2: #EAF2ED;
+    --color-night-3: #FFFFFF;
+    --color-paper: #07110E;
+    --color-white: #07110E;
+    --color-muted-dark: #4A5B53;
+    --color-mint: #0E8A66;
+    --color-sky: #0B78B8;
   }
 
   html {
@@ -53,7 +63,7 @@
   }
 
   body {
-    background: var(--color-stage);
+    background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 1.0625rem;
@@ -86,7 +96,7 @@
   }
 
   .on-dark :focus-visible {
-    outline-color: var(--color-lime);
+    outline-color: var(--color-forest);
   }
 
   section[id] {
@@ -164,14 +174,14 @@
 /* ---------- Backgrounds ---------- */
 .tech-grid {
   background-image:
-    linear-gradient(to right, rgba(242, 247, 244, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(242, 247, 244, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(11, 74, 56, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 74, 56, 0.07) 1px, transparent 1px);
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(ellipse at 50% 35%, #000 20%, transparent 72%);
   mask-image: radial-gradient(ellipse at 50% 35%, #000 20%, transparent 72%);
 }
 .dot-field {
-  background-image: radial-gradient(rgba(157, 181, 170, 0.2) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(14, 107, 80, 0.16) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 .aurora {
@@ -210,7 +220,7 @@
 }
 .btn-primary {
   background: var(--color-ink);
-  color: var(--color-paper);
+  color: #F5F8F6;
   box-shadow: 0 10px 24px -12px rgba(7, 17, 14, 0.7);
 }
 .btn-lime {
@@ -365,7 +375,7 @@
   transition: transform 0.2s linear;
 }
 .outline-text {
-  -webkit-text-stroke: 1.5px rgba(242, 247, 244, 0.5);
+  -webkit-text-stroke: 1.5px rgba(7, 17, 14, 0.4);
   color: transparent;
 }
 
@@ -550,7 +560,7 @@
 
 /* ---------- Work: card fan (list on phones, arc on desktop) ---------- */
 .fan-wrap[data-mode="fan"] {
-  height: 300vh;
+  height: 250vh;
 }
 .fan-wrap[data-mode="fan"] .fan-sticky {
   position: sticky;
@@ -559,25 +569,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1.75rem;
+  padding-top: 4.5rem;
   overflow: clip;
 }
 .fan-wrap[data-mode="fan"] .fan-sticky > * {
   flex-shrink: 0;
 }
-.fan-wrap[data-mode="fan"] .fan-head {
-  padding-top: 5.5rem;
-}
-.fan-wrap[data-mode="fan"] .fan-title {
-  font-size: clamp(2rem, 3.6vw, 3rem);
-}
+/* The area is tall enough for the card, its arc drop and the hover lift, so the detail below never sits under a card. */
 .fan-wrap[data-mode="fan"] .fan-area {
   position: relative;
-  height: min(46vh, 380px);
-  margin-top: 1.5rem;
+  height: calc(var(--cw, 240px) * 0.625 + 175px);
 }
 .fan-wrap[data-mode="fan"] .fan-detail {
   position: relative;
-  z-index: 20;
+  z-index: 60;
 }
 .fan-wrap[data-mode="fan"] .fan-row {
   display: block;
@@ -588,10 +594,10 @@
 .fan-wrap[data-mode="fan"] .fan-card {
   position: absolute;
   left: 50%;
-  top: 3%;
+  top: 8px;
   min-width: 0;
-  width: var(--cw, 300px);
-  margin-left: calc(var(--cw, 300px) / -2);
+  width: var(--cw, 240px);
+  margin-left: calc(var(--cw, 240px) / -2);
   transform-origin: 50% 130%;
   will-change: transform;
 }
@@ -600,6 +606,9 @@
 }
 .fan-wrap[data-mode="list"] .fan-detail {
   display: none;
+}
+.fan-wrap[data-mode="list"] .fan-area {
+  padding-top: 0.5rem;
 }
 
 /* ---------- Accordion ---------- */
@@ -645,6 +654,369 @@
   }
   .acc-panel,
   .btn-chip {
+    transition: none;
+  }
+}
+
+/* ---------- Scale scene: loops run only while the section is in view ---------- */
+.scale-scene .eq-bar,
+.scale-scene .net-node,
+.scale-scene .net-line,
+.scale-scene .learner,
+.scale-scene .map-ping {
+  animation-play-state: paused;
+}
+.scale-scene[data-live="true"] .eq-bar,
+.scale-scene[data-live="true"] .net-node,
+.scale-scene[data-live="true"] .net-line,
+.scale-scene[data-live="true"] .learner,
+.scale-scene[data-live="true"] .map-ping {
+  animation-play-state: running;
+}
+.eq-bar {
+  transform-origin: bottom;
+  animation: eq 1.1s ease-in-out infinite alternate;
+}
+@keyframes eq {
+  from {
+    transform: scaleY(0.18);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.net-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-pop 2.4s ease-in-out infinite;
+}
+@keyframes node-pop {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+.net-line {
+  animation: dash 1.2s linear infinite;
+}
+.learner {
+  animation: learner-float 3.2s ease-in-out infinite;
+}
+@keyframes learner-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+    opacity: 1;
+  }
+}
+.map-ping {
+  transform: translate(-50%, -50%);
+  animation: map-ping 2s ease-out infinite;
+}
+@keyframes map-ping {
+  from {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar,
+  .net-node,
+  .net-line,
+  .learner,
+  .map-ping {
+    animation: none !important;
+  }
+}
+
+/* ---------- Section rhythm: one clean switch dark -> light and one back ---------- */
+.curtain-top {
+  position: relative;
+  z-index: 1;
+  margin-top: -2.5rem;
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .curtain-top {
+    margin-top: -3.5rem;
+    border-top-left-radius: 3.5rem;
+    border-top-right-radius: 3.5rem;
+  }
+}
+.chat-b {
+  animation: chat-pop 3.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.scale-scene[data-live="true"] .chat-b {
+  animation-play-state: running;
+}
+@keyframes chat-pop {
+  0%,
+  8% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  18%,
+  85% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-b {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+@keyframes found-ring {
+  from {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* ---------- Finale: the dot has landed on the send button ---------- */
+.btn-lime[data-landed="true"] {
+  animation: landed 2.2s ease-out infinite;
+}
+@keyframes landed {
+  0% {
+    box-shadow: 0 0 0 0 rgba(200, 244, 58, 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 20px rgba(200, 244, 58, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-lime[data-landed="true"] {
+    animation: none;
+    box-shadow: 0 0 0 4px rgba(200, 244, 58, 0.35);
+  }
+}
+
+/* ---------- Screen-lock kinetic intro (KineticIntro.tsx) ---------- */
+[data-kl="init"] .kw {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kl {
+    height: auto !important;
+  }
+  .kl > div {
+    position: static !important;
+    height: auto !important;
+    padding-block: 4rem;
+  }
+  .kl .kw {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* ---------- Living background: drifting waves, floating shapes, pointer depth ---------- */
+.lb {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 900px;
+}
+.lb-world {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(var(--my, 0) * -5deg)) rotateY(calc(var(--mx, 0) * 7deg));
+  transition: transform 0.5s var(--ease);
+}
+.lb-orb {
+  position: absolute;
+  border-radius: 9999px;
+  transform: translate3d(calc(var(--mx, 0) * 30px), calc(var(--p, 0) * -60px), 0);
+}
+.lb-wave {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 200%;
+  height: 38%;
+  animation: lb-drift 26s linear infinite;
+}
+.lb-wave.is-2 {
+  height: 30%;
+  animation-duration: 38s;
+  animation-direction: reverse;
+}
+@keyframes lb-drift {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.lb-shape {
+  position: absolute;
+  transform: translate3d(calc(var(--mx, 0) * var(--k, 40) * 1px), calc(var(--p, 0) * var(--s, -90) * 1px), var(--z, 0px))
+    rotate(calc(var(--p, 0) * var(--r, 40) * 1deg));
+}
+.lb-shape > span {
+  display: block;
+  animation: lb-float var(--fd, 7s) ease-in-out infinite alternate;
+}
+@keyframes lb-float {
+  from {
+    transform: translate3d(0, -14px, 0) rotate(-4deg);
+  }
+  to {
+    transform: translate3d(0, 14px, 0) rotate(5deg);
+  }
+}
+.lb[data-live="false"] .lb-wave,
+.lb[data-live="false"] .lb-shape > span {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lb-wave,
+  .lb-shape > span {
+    animation: none;
+  }
+}
+
+/* ---------- Pricing tab panel: slides in from the side it was chosen ---------- */
+@keyframes tab-in-r {
+  from {
+    opacity: 0;
+    transform: translate3d(28px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tab-in-l {
+  from {
+    opacity: 0;
+    transform: translate3d(-28px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.tab-in-r {
+  animation: tab-in-r 0.5s var(--ease) both;
+}
+.tab-in-l {
+  animation: tab-in-l 0.5s var(--ease) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab-in-r,
+  .tab-in-l {
+    animation: none;
+  }
+}
+
+/* ---------- Gold path scene: a stop ripples once when the traveller reaches it ---------- */
+.stop-ring {
+  opacity: 0;
+}
+[data-on="true"] .stop-ring {
+  animation: found-ring 1.1s ease-out 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-on="true"] .stop-ring {
+    animation: none;
+  }
+}
+
+/* ---------- MaskedText: words rise out of a mask when scrolled into view ---------- */
+.mt-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+  perspective: 700px;
+}
+.mt-inner {
+  display: inline-block;
+  transform: translate3d(0, 120%, 0) rotateX(-25deg);
+  opacity: 0;
+  filter: blur(10px);
+  transform-origin: 50% 100%;
+  transition:
+    transform 0.95s var(--ease),
+    opacity 0.7s ease-out,
+    filter 0.8s ease-out;
+  transition-delay: calc(var(--i, 0) * 75ms + var(--d, 0ms));
+}
+.mt-in .mt-inner {
+  transform: none;
+  opacity: 1;
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mt-inner {
+    transform: none;
+    opacity: 1;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* ---------- MaskedText: words rise out of a mask when scrolled into view ---------- */
+.mt-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+  perspective: 700px;
+}
+.mt-inner {
+  display: inline-block;
+  transform: translate3d(0, 120%, 0) rotateX(-25deg);
+  opacity: 0;
+  filter: blur(10px);
+  transform-origin: 50% 100%;
+  transition:
+    transform 0.95s var(--ease),
+    opacity 0.7s ease-out,
+    filter 0.8s ease-out;
+  transition-delay: calc(var(--i, 0) * 75ms + var(--d, 0ms));
+}
+.mt-in .mt-inner {
+  transform: none;
+  opacity: 1;
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mt-inner {
+    transform: none;
+    opacity: 1;
+    filter: none;
     transition: none;
   }
 }

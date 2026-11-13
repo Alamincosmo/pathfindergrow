@@ -5,8 +5,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Plus } from "lucide-react";
 import { FAN_PROJECTS, MORE_WORK, type CaseStudy } from "@/data/growthStudioData";
 import { TrackedLink } from "@/components/TrackedLink";
-import { Reveal } from "@/components/motion/Reveal";
-import { Eyebrow } from "@/components/motion/Eyebrow";
+import { KineticIntro } from "@/components/motion/KineticIntro";
 import { loadGsap, prefersReducedMotion } from "@/lib/gsap";
 
 const FLOWS: Record<NonNullable<CaseStudy["diagram"]>, string[]> = {
@@ -73,6 +72,7 @@ function Detail({ p }: { p: CaseStudy }) {
 export default function Work() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const detailRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(3);
   const [more, setMore] = useState(false);
 
@@ -95,14 +95,16 @@ export default function Work() {
         const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
         const n = cards.length;
         const mid = (n - 1) / 2;
-        const cardW = () => Math.min(320, Math.max(220, window.innerWidth * 0.22));
-        const spacing = () => Math.min(190, (window.innerWidth - cardW() - 120) / (n - 1));
+        const cardW = () =>
+          Math.round(Math.min(250, window.innerWidth * 0.17, window.innerHeight * 0.28));
+        const spacing = () => Math.min(168, (window.innerWidth - cardW() - 160) / (n - 1));
         wrap.style.setProperty("--cw", `${cardW()}px`);
 
+        /* Cards start hidden below the screen, rise as the section arrives, then fan out. */
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: wrap,
-            start: "top top",
+            start: "top 62%",
             end: "bottom bottom",
             scrub: 0.6,
             invalidateOnRefresh: true,
@@ -110,22 +112,29 @@ export default function Work() {
         });
         tl.fromTo(
           cards,
-          { x: 0, y: () => window.innerHeight * 0.95, rotation: 0, scale: 0.82 },
-          { y: 0, duration: 0.4, stagger: 0.025, ease: "power2.out" },
+          { x: 0, y: () => window.innerHeight * 0.8, rotation: 0, scale: 0.8, autoAlpha: 0 },
+          { y: 0, scale: 0.94, autoAlpha: 1, duration: 0.34, stagger: 0.02, ease: "power3.out" },
           0
-        ).to(
-          cards,
-          {
-            x: (i: number) => (i - mid) * spacing(),
-            y: (i: number) => Math.pow(i - mid, 2) * 6,
-            rotation: (i: number) => (i - mid) * 4.5,
-            scale: 1,
-            duration: 0.5,
-            ease: "power2.inOut",
-            stagger: { each: 0.012, from: "center" },
-          },
-          0.42
-        );
+        )
+          .to(
+            cards,
+            {
+              x: (i: number) => (i - mid) * spacing(),
+              y: (i: number) => Math.pow(i - mid, 2) * 4,
+              rotation: (i: number) => (i - mid) * 4,
+              scale: 1,
+              duration: 0.42,
+              ease: "power2.inOut",
+              stagger: { each: 0.01, from: "center" },
+            },
+            0.36
+          )
+          .fromTo(
+            detailRef.current,
+            { autoAlpha: 0, y: 24 },
+            { autoAlpha: 1, y: 0, duration: 0.18, ease: "power2.out" },
+            0.66
+          );
       }, wrap);
     };
 
@@ -142,22 +151,20 @@ export default function Work() {
   const current = FAN_PROJECTS[active];
 
   return (
-    <section id="work" className="on-dark relative isolate bg-night-2 text-paper">
+    <section id="work" className="on-dark relative isolate bg-stage text-paper">
       <div className="dot-field pointer-events-none absolute inset-0 -z-10 opacity-60" />
+      <KineticIntro
+        eyebrow="Selected work"
+        title="Work you can *open and check.*"
+        story="Real projects with live links. Open any card and judge the work yourself. Each one says what our role was, so you can see what we built, what we ranked and what we designed."
+        chips={["Live sites", "Our role stated", "Nothing staged"]}
+        variant="type"
+      />
 
       <div ref={wrapRef} data-mode="list" className="fan-wrap">
         <div className="fan-sticky">
-          <div className="fan-head container-x pt-16 lg:pt-20">
-            <Reveal className="max-w-3xl">
-              <Eyebrow className="text-mint">Selected work</Eyebrow>
-              <h2 className="t-display-l fan-title mt-4">
-                Work you can <strong>open and check.</strong>
-              </h2>
-            </Reveal>
-          </div>
-
-          <div className="fan-area mt-10">
-            <div className="fan-row -mx-0 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 md:px-8">
+          <div className="fan-area">
+            <div className="fan-row flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-6 md:px-8">
               {FAN_PROJECTS.map((p, i) => (
                 <a
                   key={p.id}
@@ -170,30 +177,30 @@ export default function Work() {
                   onPointerEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   style={{ zIndex: i === active ? 50 : Math.round(FAN_PROJECTS.length - Math.abs(i - mid)) }}
-                  className={`fan-card group block min-w-[78%] shrink-0 snap-center sm:min-w-[46%] ${
+                  className={`fan-card group block w-[72%] max-w-[320px] shrink-0 snap-center sm:w-[44%] md:w-[30%] ${
                     i === active ? "is-active" : ""
                   }`}
                 >
-                  <div className="overflow-hidden rounded-xl border border-white/12 bg-night-3 shadow-[0_30px_60px_-24px_rgba(0,0,0,0.85)] transition-transform duration-300 group-hover:-translate-y-3 group-focus-visible:-translate-y-3 [.is-active_&]:-translate-y-3">
+                  <div className="overflow-hidden rounded-xl border border-white/12 bg-night-3 shadow-[0_24px_48px_-22px_rgba(11,74,56,0.5)] transition-transform duration-300 group-hover:-translate-y-2 group-focus-visible:-translate-y-2 [.is-active_&]:-translate-y-2">
                     <div className="relative aspect-[16/10] overflow-hidden bg-night-3">
                       {p.image ? (
                         <Image
                           src={p.image.src}
                           alt=""
                           fill
-                          sizes="(min-width: 1024px) 320px, 80vw"
+                          sizes="(min-width: 1024px) 250px, 70vw"
                           className="object-cover object-top"
                         />
                       ) : (
                         <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(80%_80%_at_50%_0%,rgba(53,224,161,0.2),transparent)] p-4 text-center">
-                          <span className="font-display text-3xl font-extrabold tracking-[-0.04em]">{p.client}</span>
+                          <span className="font-display text-2xl font-extrabold tracking-[-0.04em]">{p.client}</span>
                         </div>
                       )}
                     </div>
-                    <div className="p-4">
-                      <p className="font-display text-lg font-bold leading-tight tracking-[-0.02em]">{p.client}</p>
-                      <p className="mt-1 text-[0.9375rem] text-muted-dark">{p.category}</p>
-                      <p className="fan-summary mt-3 text-[0.9375rem] text-muted-dark">{p.summary}</p>
+                    <div className="p-3.5">
+                      <p className="font-display text-base font-bold leading-tight tracking-[-0.02em]">{p.client}</p>
+                      <p className="mt-0.5 truncate text-[0.8125rem] text-muted-dark">{p.category}</p>
+                      <p className="fan-summary mt-2 text-[0.875rem] text-muted-dark">{p.summary}</p>
                     </div>
                   </div>
                 </a>
@@ -201,7 +208,7 @@ export default function Work() {
             </div>
           </div>
 
-          <div className="fan-detail container-x pb-6 lg:pb-8">
+          <div ref={detailRef} className="fan-detail container-x pb-6 lg:pb-0">
             <div className="max-w-2xl border-t border-white/10 pt-4" aria-live="polite">
               <Detail p={current} />
             </div>

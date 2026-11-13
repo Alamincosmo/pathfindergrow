@@ -1,15 +1,29 @@
 import BrandLogo from "@/components/BrandLogo";
-import { AGENCY_INFO, PILLARS, PROOF_ITEMS } from "@/data/growthStudioData";
+import { AGENCY_INFO, PILLARS, PROOF_ITEMS, TEAM_MEMBERS } from "@/data/growthStudioData";
 
-export default function Footer() {
+/** `base` is "" on the home page and "/" on sub-pages so section links resolve from anywhere. */
+export default function Footer({ base = "" }: { base?: string }) {
   const live = PROOF_ITEMS.filter((p) => p.href);
   return (
     <footer className="on-dark border-t border-white/10 bg-stage text-paper">
       <div className="container-x py-14">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <BrandLogo tone="dark" showTagline />
-            <p className="mt-5 max-w-sm text-muted-dark">Founder-led digital growth studio.</p>
+            <BrandLogo tone="dark" showTagline href={base || "#"} />
+            <p className="mt-5 max-w-sm text-muted-dark">{AGENCY_INFO.definition}</p>
+            <p className="mt-4 text-[0.9375rem] text-muted-dark">
+              Founded by{" "}
+              {TEAM_MEMBERS.map((m, i) => (
+                <span key={m.slug}>
+                  {i > 0 && " and "}
+                  <a href={`/team/${m.slug}`} className="link-underline text-paper">
+                    {m.name}
+                  </a>{" "}
+                  ({m.jobTitle.split(" and ")[0]})
+                </span>
+              ))}
+              .
+            </p>
           </div>
 
           <nav aria-label="Footer services" className="md:col-span-2">
@@ -17,7 +31,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               {PILLARS.map((p) => (
                 <li key={p.id}>
-                  <a href="#growth" className="link-underline">
+                  <a href={`${base}#growth`} className="link-underline">
                     {p.stage}
                   </a>
                 </li>
@@ -36,7 +50,7 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <a href="#work" className="link-underline">
+                <a href={`${base}#work`} className="link-underline">
                   All projects
                 </a>
               </li>

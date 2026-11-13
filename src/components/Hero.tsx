@@ -36,18 +36,18 @@ export default function Hero() {
               <span className="absolute inset-0 animate-ping rounded-full bg-mint opacity-70" />
               <span className="relative size-2 rounded-full bg-mint" />
             </span>
-            Digital growth studio · Dhaka
+            Pathfinder Grow · Business growth company
           </p>
 
           <h1 className="t-display-xl mt-7" aria-label="Get found. Get chosen. Grow.">
             <SplitLine text="Get found." base={0} />
             <SplitLine text="Get chosen." base={260} />
-            <SplitLine text="Grow." base={540} className="text-mint [text-shadow:0_0_40px_rgba(53,224,161,0.45)]" />
+            <SplitLine text="Grow." base={540} className="grad-text" />
           </h1>
 
           <p className="t-lead fade-up mt-8 max-w-xl text-muted-dark" style={d(200)}>
-            Search and AI visibility so customers find you. A trusted brand and a fast website so
-            they choose you. Built by two founders.
+            We build platforms used by more than 3 million people, and we grow businesses in every
+            direction: planning, websites and apps, ads, branding, SEO and AI search.
           </p>
 
           <div className="fade-up mt-9 flex flex-wrap items-center gap-x-7 gap-y-4" style={d(300)}>

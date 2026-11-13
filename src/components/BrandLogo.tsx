@@ -16,14 +16,17 @@ export function LogoMark({ className = "" }: { className?: string }) {
 export default function BrandLogo({
   tone = "light",
   showTagline = false,
+  href = "#",
 }: {
   tone?: "light" | "dark";
   showTagline?: boolean;
+  href?: string;
 }) {
   const dark = tone === "dark";
   return (
     <a
-      href="#"
+      href={href}
+      aria-label="Pathfinder Grow home"
       className="inline-flex items-center gap-3"
     >
       <LogoMark className="h-9 w-auto" />
@@ -40,7 +43,7 @@ export default function BrandLogo({
           <span
             className={`t-label mt-1.5 ${dark ? "text-muted-dark" : "text-muted"}`}
           >
-            Digital growth studio
+            Business growth company
           </span>
         )}
       </span>

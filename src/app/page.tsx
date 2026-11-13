@@ -2,8 +2,8 @@ import Navbar, { StickyCta } from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import StatementBand from "@/components/StatementBand";
-import ProofStrip from "@/components/ProofStrip";
-import GrowthCards from "@/components/GrowthCards";
+import ScaleStory from "@/components/ScaleStory";
+import GrowthStory from "@/components/GrowthStory";
 import GeoStage from "@/components/GeoStage";
 import Work from "@/components/Work";
 import Process from "@/components/Process";
@@ -26,8 +26,8 @@ export default function Home() {
         <Hero />
         <Marquee />
         <StatementBand />
-        <ProofStrip />
-        <GrowthCards />
+        <ScaleStory />
+        <GrowthStory />
         <GeoStage />
         <Work />
         <Process />

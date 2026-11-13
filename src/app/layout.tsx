@@ -23,17 +23,40 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const TITLE = "Pathfinder Grow | Digital Growth Studio: SEO, AI Search, Brand & Websites";
+// Brand first, so a search for "Pathfinder Grow" matches the start of the title.
+const TITLE = "Pathfinder Grow | Business Growth Company: Websites, Apps, SEO & Ads";
 const DESCRIPTION =
-  "Founder-led digital growth studio. SEO and AI-search visibility, brand identity, fast websites and automation to help your business get found, get chosen and grow.";
+  "Pathfinder Grow helps businesses grow in every direction: websites, apps, ads, branding, SEO and AI search. Built platforms used by 3M+ people. 200+ businesses grown.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pathfindergrow.com"),
-  title: TITLE,
+  title: { default: TITLE, template: "%s | Pathfinder Grow" },
   description: DESCRIPTION,
+  applicationName: "Pathfinder Grow",
   alternates: { canonical: "/" },
-  authors: [{ name: "Md. Siyam" }, { name: "Robin" }],
-  icons: { icon: "/logo.webp" },
+  authors: [
+    { name: "Robin", url: "/team/robin" },
+    { name: "Md. Siyam", url: "/team/siyam" },
+  ],
+  creator: "Pathfinder Grow",
+  publisher: "Pathfinder Grow",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  // Google shows the favicon beside every result: square, larger than 48x48, stable URL, crawlable.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  appleWebApp: { title: "Pathfinder Grow", statusBarStyle: "default" },
+  formatDetection: { telephone: false },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -50,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050D0A",
+  themeColor: "#F4F8F5",
   width: "device-width",
   initialScale: 1,
 };
@@ -63,7 +86,7 @@ export default function RootLayout({
       lang="en"
       className={`${bricolage.variable} ${instrumentSans.variable} ${plexMono.variable}`}
     >
-      <body className="bg-stage font-sans text-ink antialiased">
+      <body className="bg-paper font-sans text-ink antialiased">
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}.scroll-word{opacity:1!important}`}</style>
         </noscript>
