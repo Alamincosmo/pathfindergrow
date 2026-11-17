@@ -36,7 +36,7 @@ export default function Hero() {
               <span className="absolute inset-0 animate-ping rounded-full bg-mint opacity-70" />
               <span className="relative size-2 rounded-full bg-mint" />
             </span>
-            Pathfinder Grow · Business growth company
+            PathFinder Grow · Business growth company
           </p>
 
           <h1 className="t-display-xl mt-7" aria-label="Get found. Get chosen. Grow.">

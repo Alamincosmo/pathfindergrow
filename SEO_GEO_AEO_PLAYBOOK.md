@@ -1,4 +1,4 @@
-# Pathfinder Grow: SEO · AEO · GEO Playbook
+# PathFinder Grow: SEO · AEO · GEO Playbook
 
 হালনাগাদ: ১৩ নভেম্বর ২০২৬। November 2026 Core Update চলছে (শুরু ১০ নভেম্বর, শেষ হতে ~২ সপ্তাহ)।
 
@@ -55,14 +55,14 @@
 - সার্চে দেখাতে **কয়েক দিন থেকে কয়েক সপ্তাহ** লাগে। দ্রুত করতে Search Console-এ হোমপেজের URL Inspection খুলে Request Indexing চাপুন।
 
 ### Site name (রেজাল্টে লিংকের উপরে যে নাম দেখায়)
-হোমপেজের `WebSite` schema-তে `name: "Pathfinder Grow"` আর `alternateName: ["PathfinderGrow", ...]` দেওয়া আছে। সাথে `og:site_name`, `<title>` আর H1-এর কাছের টেক্সট সব জায়গায় একই নাম ব্যবহার করা হয়েছে।
+হোমপেজের `WebSite` schema-তে `name: "PathFinder Grow"` আর `alternateName: ["PathfinderGrow", ...]` দেওয়া আছে। সাথে `og:site_name`, `<title>` আর H1-এর কাছের টেক্সট সব জায়গায় একই নাম ব্যবহার করা হয়েছে।
 
 ---
 
 ## ৪. লেখার নিয়ম (AEO + GEO)
 
 1. **শুরুতেই উত্তর:** প্রতিটা সেকশনের প্রথম ১-২ বাক্যে (৪০-৬০ শব্দে) সরাসরি উত্তর, তারপর বিস্তারিত।
-2. **প্রশ্নের মতো heading** লিখুন, যেমন "Who is Robin?", "What does Pathfinder Grow do?"। মানুষ যেভাবে AI-কে প্রশ্ন করে, ঠিক সেভাবে।
+2. **প্রশ্নের মতো heading** লিখুন, যেমন "Who is Robin?", "What does PathFinder Grow do?"। মানুষ যেভাবে AI-কে প্রশ্ন করে, ঠিক সেভাবে।
 3. **নির্দিষ্ট সংখ্যা আর নাম:** "3M+ registered users on Audiofrica" লিখুন, "millions of users" না। Princeton GEO গবেষণায় (KDD 2024) পরিসংখ্যান, quote আর citation যোগ করে AI-তে দৃশ্যমানতা সবচেয়ে বেশি বেড়েছে।
 4. **একটা পেজে একটা টপিক।** প্রতিটা সার্ভিস আর প্রতিটা কেস স্টাডির জন্য আলাদা পেজ।
 5. **তারিখ আর লেখকের নাম** দিন। Perplexity নতুন কনটেন্ট পছন্দ করে।
@@ -91,9 +91,9 @@
 
 ---
 
-## ৬. লঞ্চ চেকলিস্ট ("Pathfinder Grow" সার্চে দ্রুত #১-এ আসার জন্য)
+## ৬. লঞ্চ চেকলিস্ট ("PathFinder Grow" সার্চে দ্রুত #১-এ আসার জন্য)
 
-ব্র্যান্ডের নাম ইউনিক হলে সাধারণত কয়েক দিন থেকে দুই সপ্তাহের মধ্যে #১ আসে। "Pathfinder Communication" বা "Pathfinder Coaching"-এর সাথে নামের মিল আছে, তাই নাম সবসময় **"Pathfinder Grow"** লিখতে হবে, আর পাশে "business growth company" শব্দ রাখতে হবে।
+ব্র্যান্ডের নাম ইউনিক হলে সাধারণত কয়েক দিন থেকে দুই সপ্তাহের মধ্যে #১ আসে। "Pathfinder Communication" বা "Pathfinder Coaching"-এর সাথে নামের মিল আছে, তাই নাম সবসময় **"PathFinder Grow"** লিখতে হবে, আর পাশে "business growth company" শব্দ রাখতে হবে।
 
 ### দিন ০ (ডিপ্লয়ের দিন)
 - [ ] `hello@pathfindergrow.com` ইমেইল বানানো, তারপর `AGENCY_INFO.contact.email` বদলে দেওয়া (এখন অন্য ডোমেইনের ইমেইল আছে, যা বিশ্বাসযোগ্যতা কমায়)
@@ -113,11 +113,11 @@
 - [ ] Clutch.co আর GoodFirms প্রোফাইল (এজেন্সি র‍্যাঙ্কিং লিস্টে AI এগুলো থেকেই তথ্য নেয়)
 - [ ] Crunchbase
 - [ ] X (Twitter), Instagram, YouTube (ad video পোর্টফোলিওর জন্য)
-- [ ] Robin আর Siyam-এর LinkedIn-এ "CEO at Pathfinder Grow" আর "CTO at Pathfinder Grow" পদবি, কোম্পানি পেজের সাথে লিংক করা। তারপর সব প্রোফাইল URL `TEAM_MEMBERS[].sameAs`-এ যোগ করা
+- [ ] Robin আর Siyam-এর LinkedIn-এ "CEO at PathFinder Grow" আর "CTO at PathFinder Grow" পদবি, কোম্পানি পেজের সাথে লিংক করা। তারপর সব প্রোফাইল URL `TEAM_MEMBERS[].sameAs`-এ যোগ করা
 
 ### সপ্তাহ ১-৪ (প্রমাণ জোগাড়)
 - [ ] পুরনো ক্লায়েন্টদের অনুরোধ করা যেন তারা Google Business Profile আর Clutch-এ রিভিউ দেন (৫-১০টা আসল রিভিউ)
-- [ ] ক্লায়েন্টদের অনুমতি নিয়ে তাদের সাইটের ফুটারে "Designed & grown by Pathfinder Grow" লিংক দেওয়া (Doctors Hero, PatientCare, Kajer Hut, Oushud)
+- [ ] ক্লায়েন্টদের অনুমতি নিয়ে তাদের সাইটের ফুটারে "Designed & grown by PathFinder Grow" লিংক দেওয়া (Doctors Hero, PatientCare, Kajer Hut, Oushud)
 - [ ] প্রতিটা বড় প্রজেক্টের জন্য আলাদা কেস স্টাডি পেজ `/work/[slug]`: সমস্যা, সমাধান, ফলাফল, সংখ্যা
 - [ ] প্রতিটা সার্ভিসের জন্য আলাদা পেজ `/services/[slug]`
 
@@ -140,8 +140,8 @@
 ---
 
 ## ৮. মাপার পদ্ধতি (প্রতি মাসে)
-- Search Console: "Pathfinder Grow" কীওয়ার্ডে position আর impressions; ২৪ নভেম্বরের পর এক সপ্তাহ অপেক্ষা করে আগের সপ্তাহের সাথে তুলনা
-- ChatGPT, Gemini, Perplexity আর Claude-কে একই প্রশ্নগুলো করা: "What is Pathfinder Grow?", "Who is Robin from Pathfinder Grow?", "Best business growth company for startups". উত্তর আর cite হওয়া সোর্স স্প্রেডশিটে লিখে রাখা
+- Search Console: "PathFinder Grow" কীওয়ার্ডে position আর impressions; ২৪ নভেম্বরের পর এক সপ্তাহ অপেক্ষা করে আগের সপ্তাহের সাথে তুলনা
+- ChatGPT, Gemini, Perplexity আর Claude-কে একই প্রশ্নগুলো করা: "What is PathFinder Grow?", "Who is Robin from PathFinder Grow?", "Best business growth company for startups". উত্তর আর cite হওয়া সোর্স স্প্রেডশিটে লিখে রাখা
 - AI referral traffic Analytics-এ ট্র্যাক করা
 
 ---

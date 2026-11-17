@@ -4,7 +4,7 @@ import { AGENCY_INFO } from "@/data/growthStudioData";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: AGENCY_INFO.name,
-    short_name: "Pathfinder",
+    short_name: "PathFinder",
     description: AGENCY_INFO.definition,
     start_url: "/",
     display: "standalone",

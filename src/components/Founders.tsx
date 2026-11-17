@@ -56,7 +56,7 @@ function FounderRow({ m, flip }: { m: TeamMember; flip: boolean }) {
           >
             <Image
               src={m.image}
-              alt={`${m.name}, co-founder of Pathfinder Grow`}
+              alt={`${m.name}, co-founder of PathFinder Grow`}
               fill
               sizes="(min-width: 1024px) 420px, 90vw"
               className="object-cover object-top"

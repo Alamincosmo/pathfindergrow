@@ -90,7 +90,7 @@ export default function StartForm() {
           contact: data.get("contact"),
           message: data.get("message"),
           subject: `New growth audit request from ${data.get("name")}`,
-          from_name: "Pathfinder Grow website",
+          from_name: "PathFinder Grow website",
         }),
       });
       const json = await res.json();

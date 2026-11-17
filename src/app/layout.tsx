@@ -23,23 +23,23 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-// Brand first, so a search for "Pathfinder Grow" matches the start of the title.
-const TITLE = "Pathfinder Grow | Business Growth Company: Websites, Apps, SEO & Ads";
+// Brand first, so a search for "PathFinder Grow" matches the start of the title.
+const TITLE = "PathFinder Grow | Business Growth Company: Websites, Apps, SEO & Ads";
 const DESCRIPTION =
-  "Pathfinder Grow helps businesses grow in every direction: websites, apps, ads, branding, SEO and AI search. Built platforms used by 3M+ people. 200+ businesses grown.";
+  "PathFinder Grow helps businesses grow in every direction: websites, apps, ads, branding, SEO and AI search. Built platforms used by 3M+ people. 200+ businesses grown.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pathfindergrow.com"),
-  title: { default: TITLE, template: "%s | Pathfinder Grow" },
+  title: { default: TITLE, template: "%s | PathFinder Grow" },
   description: DESCRIPTION,
-  applicationName: "Pathfinder Grow",
+  applicationName: "PathFinder Grow",
   alternates: { canonical: "/" },
   authors: [
     { name: "Robin", url: "/team/robin" },
     { name: "Md. Siyam", url: "/team/siyam" },
   ],
-  creator: "Pathfinder Grow",
-  publisher: "Pathfinder Grow",
+  creator: "PathFinder Grow",
+  publisher: "PathFinder Grow",
   robots: {
     index: true,
     follow: true,
@@ -55,13 +55,13 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
-  appleWebApp: { title: "Pathfinder Grow", statusBarStyle: "default" },
+  appleWebApp: { title: "PathFinder Grow", statusBarStyle: "default" },
   formatDetection: { telephone: false },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
     url: "https://pathfindergrow.com",
-    siteName: "Pathfinder Grow",
+    siteName: "PathFinder Grow",
     locale: "en_US",
     type: "website",
   },

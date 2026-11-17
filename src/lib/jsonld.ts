@@ -24,7 +24,10 @@ export function personNode(m: TeamMember) {
     image: `${url}${m.image}`,
     jobTitle: m.jobTitle,
     description: m.summary,
-    worksFor: { "@id": ORG_ID },
+    // Robin also runs PathFinder Peko: same person, two separate companies.
+    worksFor: m.alsoWorksFor?.length
+      ? [{ "@id": ORG_ID }, ...m.alsoWorksFor.map((id) => ({ "@id": id }))]
+      : { "@id": ORG_ID },
     knowsAbout: m.knowsAbout,
     ...(m.sameAs.length ? { sameAs: m.sameAs } : {}),
   };
@@ -133,6 +136,25 @@ export function buildProfileJsonLd(m: TeamMember) {
       },
       personNode(m),
       { "@type": "Organization", "@id": ORG_ID, name: AGENCY_INFO.name, url },
+      ...(m.alsoWorksFor ?? []).map((id) => ({
+        "@type": "EducationalOrganization",
+        "@id": id,
+        name: "PathFinder Peko",
+        url: "https://pathfinderpeko.com",
+        founder: { "@id": personId(m) },
+      })),
+      ...(m.faq?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: m.faq.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ]
+        : []),
       {
         "@type": "BreadcrumbList",
         itemListElement: [

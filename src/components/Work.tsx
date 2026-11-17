@@ -65,6 +65,12 @@ function Detail({ p }: { p: CaseStudy }) {
           <ArrowUpRight className="size-4" strokeWidth={1.75} />
         </TrackedLink>
       )}
+      {p.caseStudy && (
+        <a href={p.caseStudy} className="link-underline mt-5 ml-5 inline-flex items-center gap-1.5 font-medium text-mint">
+          Read the case study
+          <ArrowRight className="size-4" strokeWidth={1.75} />
+        </a>
+      )}
     </div>
   );
 }

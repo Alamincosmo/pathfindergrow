@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Pathfinder Grow, a business growth company: get found, get chosen, grow.";
+export const alt = "PathFinder Grow, a business growth company: get found, get chosen, grow.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,7 +21,7 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", fontSize: 32, letterSpacing: 4, textTransform: "uppercase" }}>
-          Pathfinder Grow · Business growth company
+          PathFinder Grow · Business growth company
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 124, lineHeight: 1, letterSpacing: -4 }}>
           <span style={{ fontWeight: 300 }}>Get found.</span>

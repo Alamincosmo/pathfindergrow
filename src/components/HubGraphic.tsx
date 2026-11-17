@@ -51,7 +51,7 @@ export default function HubGraphic({ className = "" }: { className?: string }) {
     <div
       ref={ref}
       role="img"
-      aria-label="One system: search, brand, website and automation connected around Pathfinder Grow"
+      aria-label="One system: search, brand, website and automation connected around PathFinder Grow"
       className={`relative aspect-square w-full ${className}`}
     >
       <div className="hub-spin absolute inset-[2%] rounded-full border border-dashed border-white/10" style={{ "--sd": "70s" } as React.CSSProperties} aria-hidden="true" />

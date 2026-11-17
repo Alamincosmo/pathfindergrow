@@ -26,7 +26,7 @@ export default function BrandLogo({
   return (
     <a
       href={href}
-      aria-label="Pathfinder Grow home"
+      aria-label="PathFinder Grow home"
       className="inline-flex items-center gap-3"
     >
       <LogoMark className="h-9 w-auto" />
@@ -36,7 +36,7 @@ export default function BrandLogo({
             dark ? "text-paper" : "text-ink"
           }`}
         >
-          Pathfinder{" "}
+          PathFinder{" "}
           <span className={dark ? "text-emerald" : "text-emerald-ink"}>Grow</span>
         </span>
         {showTagline && (

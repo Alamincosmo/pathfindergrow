@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const m = TEAM_MEMBERS.find((t) => t.slug === slug);
   if (!m) return {};
-  const title = `${m.name}, ${m.jobTitle} at Pathfinder Grow`;
+  const title = `${m.name}, ${m.jobTitle} at PathFinder Grow`;
   const description = m.summary.length > 158 ? `${m.summary.slice(0, 155).trimEnd()}…` : m.summary;
   return {
     title: { absolute: `${title}` },
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       description,
       url: `/team/${m.slug}`,
       siteName: AGENCY_INFO.name,
-      images: [{ url: m.image, alt: `${m.name}, ${m.jobTitle} at Pathfinder Grow` }],
+      images: [{ url: m.image, alt: `${m.name}, ${m.jobTitle} at PathFinder Grow` }],
     },
     twitter: { card: "summary", title, description },
   };
@@ -65,7 +65,7 @@ export default async function TeamMemberPage({ params }: { params: Promise<Param
             <div className="relative aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-[1.75rem] bg-paper-2">
               <Image
                 src={m.image}
-                alt={`${m.name}, ${m.jobTitle} at Pathfinder Grow`}
+                alt={`${m.name}, ${m.jobTitle} at PathFinder Grow`}
                 fill
                 priority
                 sizes="(min-width: 1024px) 360px, 90vw"
@@ -77,7 +77,7 @@ export default async function TeamMemberPage({ params }: { params: Promise<Param
           <div className="lg:col-span-8">
             <nav aria-label="Breadcrumb" className="t-label text-muted">
               <a href="/" className="link-underline">
-                Pathfinder Grow
+                PathFinder Grow
               </a>{" "}
               / {m.name}
             </nav>
@@ -86,6 +86,17 @@ export default async function TeamMemberPage({ params }: { params: Promise<Param
 
             <h2 className="mt-10 font-display text-[1.5rem] font-bold tracking-[-0.02em]">Who is {m.name}?</h2>
             <p className="t-lead mt-3 max-w-2xl">{m.summary}</p>
+
+            {m.faq && m.faq.length > 0 && (
+              <div className="mt-10 max-w-2xl space-y-6">
+                {m.faq.map((f) => (
+                  <div key={f.q}>
+                    <h2 className="font-display text-[1.25rem] font-bold tracking-[-0.02em]">{f.q}</h2>
+                    <p className="mt-2 text-muted">{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            )}
 
             <h2 className="mt-12 font-display text-[1.5rem] font-bold tracking-[-0.02em]">Key achievements</h2>
             <ul className="mt-4 max-w-2xl space-y-3">

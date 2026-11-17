@@ -70,13 +70,18 @@ export default function Footer({ base = "" }: { base?: string }) {
                   {AGENCY_INFO.contact.email}
                 </a>
               </li>
+              <li>
+                <a href={AGENCY_INFO.youtube} target="_blank" rel="noopener me" className="link-underline">
+                  YouTube: PathFinder Grow
+                </a>
+              </li>
               <li className="text-muted-dark">{AGENCY_INFO.contact.location}</li>
             </ul>
           </div>
         </div>
 
         <p className="mt-12 border-t border-white/10 pt-6 text-[0.9375rem] text-muted-dark">
-          © {new Date().getFullYear()} Pathfinder Grow
+          © {new Date().getFullYear()} PathFinder Grow
         </p>
       </div>
     </footer>

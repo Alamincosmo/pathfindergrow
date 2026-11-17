@@ -292,7 +292,7 @@ export default function ScaleStory() {
               <article
                 className={`relative overflow-hidden rounded-2xl border border-white/10 bg-night-3 p-4 sm:rounded-3xl sm:p-6 lg:col-span-6 lg:[transform:translateZ(54px)] ${E2}`}
               >
-                <p className="t-label text-emerald-ink">Pathfinder Peko · learning platform</p>
+                <p className="t-label text-emerald-ink">PathFinder Peko · gamified learning app</p>
                 <div className="relative mt-3 h-[96px] sm:mt-4 sm:h-[120px]" aria-hidden="true">
                   {LEARNERS.map((l, i) => (
                     <span
@@ -302,9 +302,9 @@ export default function ScaleStory() {
                     />
                   ))}
                   <p className="absolute right-0 top-0 font-display text-[clamp(1.875rem,8vw,3rem)] font-extrabold leading-none tracking-[-0.04em]">
-                    <Count to={10000} />
+                    <Count to={5} />
                   </p>
-                  <p className="absolute bottom-0 right-0 text-muted-dark">learners</p>
+                  <p className="absolute bottom-0 right-0 text-muted-dark">subjects, Class 9-10</p>
                 </div>
               </article>
           </div>

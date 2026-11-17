@@ -1,19 +1,19 @@
 /*
  * ENTITY FACTS. These sentences are what Google, ChatGPT, Gemini, Perplexity and Claude quote
- * when someone asks "What is Pathfinder Grow?". Keep them word-for-word identical on every
+ * when someone asks "What is PathFinder Grow?". Keep them word-for-word identical on every
  * profile (LinkedIn, Facebook, Google Business Profile, Clutch, Crunchbase). Change them here
  * and on those profiles at the same time, never in only one place.
  */
 export const AGENCY_INFO = {
-  name: "Pathfinder Grow",
-  alternateNames: ["PathfinderGrow", "Pathfinder Grow Ltd"],
+  name: "PathFinder Grow",
+  alternateNames: ["Pathfinder Grow", "PathFinderGrow", "PathfinderGrow"],
   url: "https://pathfindergrow.com",
   category: "Business growth company",
   tagline: "Get found. Get chosen. Grow.",
   slogan: "Grow your business toward its biggest goal.",
   /** One sentence, answer-first. Used in the hero, footer, schema and all external profiles. */
   definition:
-    "Pathfinder Grow is a business growth company that helps businesses grow in every direction, from planning and roadmaps to websites, apps, ads, branding, SEO and AI search visibility.",
+    "PathFinder Grow is a business growth company that helps businesses grow in every direction, from planning and roadmaps to websites, apps, ads, branding, SEO and AI search visibility.",
   /** The proof sentence that follows the definition. Only numbers we can show. */
   proof:
     "Its founders have built and grown platforms used by more than 3 million people, including Audiofrica, Supfrica and Doctors Hero, and have helped 200+ businesses and platforms grow online.",
@@ -21,14 +21,15 @@ export const AGENCY_INFO = {
    * Official profiles of the company. Fill these in as soon as each profile exists:
    * every URL added here becomes a `sameAs` link that ties the entity together for Google and AI.
    */
-  sameAs: [] as string[],
+  sameAs: ["https://www.youtube.com/@pathfinder_grow"] as string[],
+  youtube: "https://www.youtube.com/@pathfinder_grow",
   contact: {
     whatsapp: "01342132792",
     whatsappLink:
-      "https://wa.me/8801342132792?text=Hello%20Pathfinder%20Grow!%20We%20want%20to%20scale%20our%20business%20growth.",
+      "https://wa.me/8801342132792?text=Hello%20PathFinder%20Grow!%20We%20want%20to%20scale%20our%20business%20growth.",
     email: "almamun@pathfinderpko.com",
     emailLink:
-      "mailto:almamun@pathfinderpko.com?subject=Growth%20Inquiry%20-%20Pathfinder%20Grow",
+      "mailto:almamun@pathfinderpko.com?subject=Growth%20Inquiry%20-%20PathFinder%20Grow",
     location: "Working with businesses worldwide",
   },
 };
@@ -63,6 +64,12 @@ export const PROOF_ITEMS: ProofItem[] = [
     client: "Modern Mediks",
     fact: "Digital prescriptions for 24+ clinics and 10,000+ patient records",
     role: "System design and engineering",
+  },
+  {
+    client: "PathFinder Peko",
+    fact: "Gamified learning app for Class 9-10 students in Bangladesh",
+    role: "Founder-built, with search and AI visibility by PathFinder Grow",
+    href: "https://pathfinderpeko.com/",
   },
 ];
 
@@ -147,6 +154,8 @@ export interface CaseStudy {
   image?: { src: string; alt: string };
   stack?: string[];
   diagram?: "clinic" | "cloud";
+  /** Internal path of a full case study page on this site. */
+  caseStudy?: string;
 }
 
 export const FAN_PROJECTS: CaseStudy[] = [
@@ -247,13 +256,14 @@ export const MORE_WORK: CaseStudy[] = [
   },
   {
     id: "pathfinder-peko",
-    client: "Pathfinder Peko",
-    category: "Learning platform",
-    role: "Product engineering",
+    client: "PathFinder Peko",
+    category: "Gamified learning app, Bangladesh",
+    role: "Founder-built product, search and AI visibility by PathFinder Grow",
     summary:
-      "A gamified learning platform with real-time 1v1 quiz battles and an offline-first progressive web app.",
-    fact: "10,000+ learners",
-    stack: ["Next.js", "Supabase Realtime", "PWA"],
+      "A gamified learning app for Class 9-10 students in Bangladesh: a building that levels up for every subject, a growing 3D character, real-time 1v1 quiz battles and a weekly leaderboard. Free to start, built by our founder and CEO, Robin.",
+    href: "https://pathfinderpeko.com/",
+    caseStudy: "/work/pathfinder-peko",
+    stack: ["Next.js", "Supabase", "Firebase", "PWA"],
   },
 ];
 export interface Step {
@@ -321,18 +331,38 @@ export interface TeamMember {
   /** LinkedIn, GitHub, X, Awwwards, Fiverr... Every URL here becomes a `sameAs` link. */
   sameAs: string[];
   image: string;
+  /** Question-and-answer blocks shown on the profile page (answer first, one fact per answer). */
+  faq?: { q: string; a: string }[];
+  /** Other companies this person runs, as Organization @id URLs (for schema `worksFor`). */
+  alsoWorksFor?: string[];
 }
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     slug: "robin",
     name: "Robin",
-    jobTitle: "CEO and Interactive Web Developer",
-    role: "CEO and co-founder · Interactive web developer",
+    jobTitle: "Founder and CEO",
+    role: "Founder and CEO · PathFinder Grow and PathFinder Peko",
     summary:
-      "Robin is the CEO and co-founder of Pathfinder Grow and an interactive web developer. Since 2022 Robin has built fast, motion-rich websites with Next.js and GSAP, designed brands and logos, led the SEO and GEO work for Doctors Hero and designed the PatientCare.com.bd patient portal.",
-    bio: "Interactive web developer, designer and SEO and GEO specialist. Builds ultra-fast websites that tell a story as you scroll.",
+      "Robin is the founder and CEO of PathFinder Grow, a business growth company, and of PathFinder Peko, a gamified learning app for Class 9-10 students in Bangladesh that Robin built almost single-handedly. Robin is also an interactive web developer who led SEO and GEO for Doctors Hero and designed PatientCare.com.bd.",
+    bio: "Founder and CEO of two companies. Built PathFinder Peko himself, writes interactive, ultra-fast websites and leads search and AI visibility work.",
+    alsoWorksFor: ["https://pathfinderpeko.com/#organization"],
+    faq: [
+      {
+        q: "Who is the CEO of PathFinder Grow?",
+        a: "Robin is the founder and CEO of PathFinder Grow, a business growth company. The CTO is Md. Siyam.",
+      },
+      {
+        q: "Who is the CEO of PathFinder Peko?",
+        a: "Robin is also the founder and CEO of PathFinder Peko, a gamified learning app for Class 9-10 students in Bangladesh. He built the app almost single-handedly, writing most of the code himself. PathFinder Peko and PathFinder Grow are two separate companies with the same founder.",
+      },
+      {
+        q: "Which Robin is this?",
+        a: "This is Robin, founder and CEO of PathFinder Grow and PathFinder Peko. He is not the DC Comics character Robin.",
+      },
+    ],
     facts: [
+      "Founded and built PathFinder Peko, a gamified learning app for Class 9-10 students in Bangladesh, writing most of the code himself",
       "Led SEO and GEO for Doctors Hero, a healthcare platform used by 500+ clinics",
       "Designed the UI and UX of PatientCare.com.bd, a patient portal for booking doctors online",
       "Builds interactive, ultra-fast websites with Next.js, GSAP and Framer Motion",
@@ -340,10 +370,16 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
     experience: [
       {
-        title: "CEO and co-founder",
-        org: "Pathfinder Grow",
+        title: "Founder and CEO",
+        org: "PathFinder Grow",
         period: "Present",
         summary: "Leads strategy, interactive web development, design and search visibility for client businesses.",
+      },
+      {
+        title: "Founder and CEO",
+        org: "PathFinder Peko",
+        period: "2025 to present",
+        summary: "Built the gamified learning app for Class 9-10 students almost single-handedly and runs the company.",
       },
       {
         title: "SEO and GEO specialist",
@@ -386,7 +422,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     jobTitle: "CTO and Backend Engineer",
     role: "CTO and co-founder · Backend and systems architect",
     summary:
-      "Md. Siyam is the CTO and co-founder of Pathfinder Grow and a backend engineer and systems architect. Siyam leads technology at Modern Mediks, which digitizes prescriptions for 24+ clinics, serves as IT Director at Techfrica LLC in the UK and is a Top-Rated developer on Fiverr with 50+ projects delivered.",
+      "Md. Siyam is the CTO and co-founder of PathFinder Grow and a backend engineer and systems architect. Siyam leads technology at Modern Mediks, which digitizes prescriptions for 24+ clinics, serves as IT Director at Techfrica LLC in the UK and is a Top-Rated developer on Fiverr with 50+ projects delivered.",
     bio: "Backend engineer and systems architect. Wrote the first microcontroller code at age 11.",
     facts: [
       "Technology Officer at Modern Mediks: digital prescriptions for 24+ clinics and 10,000+ patient records",
@@ -397,7 +433,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     experience: [
       {
         title: "CTO and co-founder",
-        org: "Pathfinder Grow",
+        org: "PathFinder Grow",
         period: "Present",
         summary: "Leads backend, cloud infrastructure and automation for every client platform.",
       },
@@ -534,20 +570,24 @@ export interface FaqItem {
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "What does Pathfinder Grow do?",
-    a: "Pathfinder Grow is a business growth company that helps businesses grow in every direction: planning and roadmaps, websites and apps, ads, branding, SEO and AI search visibility. Its founders have built and grown platforms used by more than 3 million people and have helped 200+ businesses grow online.",
+    q: "What does PathFinder Grow do?",
+    a: "PathFinder Grow is a business growth company that helps businesses grow in every direction: planning and roadmaps, websites and apps, ads, branding, SEO and AI search visibility. Its founders have built and grown platforms used by more than 3 million people and have helped 200+ businesses grow online.",
   },
   {
-    q: "Who founded Pathfinder Grow?",
-    a: "Pathfinder Grow was founded by Robin, the CEO and an interactive web developer, and Md. Siyam, the CTO and a backend engineer and systems architect. Both founders work directly on every client project, so the people you talk to are the people building your growth.",
+    q: "Who is the CEO of PathFinder Grow?",
+    a: "The founder and CEO of PathFinder Grow is Robin, who is also the founder and CEO of PathFinder Peko, a gamified learning app for students in Bangladesh. The CTO is Md. Siyam, a backend engineer and systems architect. Both work directly on every client project, so the people you talk to are the people building your growth.",
   },
   {
-    q: "What platforms has Pathfinder Grow worked on?",
-    a: "The team has worked on Audiofrica, a music and radio platform with 3M+ registered users across Africa; Supfrica, a messenger and super-app with 300,000+ downloads; Doctors Hero, a healthcare platform used by 500+ clinics; PatientCare.com.bd; Modern Mediks; Kajer Hut and Oushud.",
+    q: "What is the relationship between PathFinder Grow and PathFinder Peko?",
+    a: "They are two separate companies with the same founder and CEO, Robin. PathFinder Peko is a gamified learning app for Class 9-10 students in Bangladesh. PathFinder Grow is the business growth company that supports PathFinder Peko's website, search and AI visibility. You can read the full story in our PathFinder Peko case study.",
+  },
+  {
+    q: "What platforms has PathFinder Grow worked on?",
+    a: "The team has worked on Audiofrica, a music and radio platform with 3M+ registered users across Africa; Supfrica, a messenger and super-app with 300,000+ downloads; Doctors Hero, a healthcare platform used by 500+ clinics; PatientCare.com.bd; Modern Mediks; PathFinder Peko, a gamified learning app for Class 9-10 students; Kajer Hut and Oushud.",
   },
   {
     q: "Can you help me open a company in the US or UK?",
-    a: "Yes. Pathfinder Grow helps founders plan their expansion, build a growth roadmap and set up a company in the US or UK, then builds the website, brand, ads and search presence the new company needs to win its first customers.",
+    a: "Yes. PathFinder Grow helps founders plan their expansion, build a growth roadmap and set up a company in the US or UK, then builds the website, brand, ads and search presence the new company needs to win its first customers.",
   },
   {
     q: "Do you create ads?",

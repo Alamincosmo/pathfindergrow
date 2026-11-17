@@ -8,6 +8,7 @@ const DEFAULT_URLS = [
   `https://${HOST}/`,
   `https://${HOST}/team/robin`,
   `https://${HOST}/team/siyam`,
+  `https://${HOST}/work/pathfinder-peko`,
 ];
 
 const urlList = process.argv.length > 2 ? process.argv.slice(2) : DEFAULT_URLS;
